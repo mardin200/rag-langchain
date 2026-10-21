@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+
+.env
+
+chroma/
+uploads/
+data/documents/
+data/evaluation/
+
+.vscode/
+.idea/
+.env.*
+!.env.example

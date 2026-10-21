@@ -1,0 +1,25 @@
+services:
+  rag:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: rag-langchain:phase3
+
+    container_name: rag-langchain
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+    volumes:
+      - ./uploads:/app/uploads
+      - ./chroma:/app/chroma
+
+    restart: unless-stopped
