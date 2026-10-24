@@ -1,11 +1,11 @@
+
 services:
-  rag:
+  rag-langchain:
     build:
       context: .
       dockerfile: Dockerfile
 
     image: rag-langchain:phase3
-
     container_name: rag-langchain
 
     ports:
@@ -13,10 +13,6 @@ services:
 
     env_file:
       - .env
-
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
 
     volumes:
       - ./uploads:/app/uploads
