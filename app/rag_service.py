@@ -10,7 +10,6 @@ from app.config import (
     OPENAI_API_KEY,
     OPENAI_BASE_URL,
 )
-
 from app.vector_store import (
     add_documents,
     get_retriever,

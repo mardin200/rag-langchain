@@ -1,12 +1,11 @@
 from pathlib import Path
 
 from langchain_community.document_loaders import (
+    Docx2txtLoader,
     PyPDFLoader,
     TextLoader,
     UnstructuredMarkdownLoader,
-    Docx2txtLoader,
 )
-
 
 SUPPORTED_EXTENSIONS = {
     ".pdf",

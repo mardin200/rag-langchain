@@ -1,6 +1,5 @@
 from app.vector_store import get_retriever
 
-
 query = "سوابق محمد الیاسی در زمینه امنیت نرم افزار چیست؟"
 
 retriever = get_retriever(k=4)

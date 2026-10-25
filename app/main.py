@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -9,31 +9,23 @@ from fastapi import (
     Request,
     UploadFile,
 )
-
 from fastapi.responses import HTMLResponse
-
 from fastapi.staticfiles import StaticFiles
-
 from fastapi.templating import Jinja2Templates
 
-
 from app.config import UPLOADS_DIR
-
 from app.document_loader import (
     SUPPORTED_EXTENSIONS,
     load_document,
 )
-
 from app.rag_service import (
     answer_question,
     index_documents,
     search_with_scores,
 )
-
 from app.vector_store import (
     delete_document,
 )
-
 
 BASE_DIR = Path(
     __file__
@@ -149,7 +141,7 @@ async def list_documents():
     "/api/documents/upload"
 )
 async def upload_document(
-    file: UploadFile = File(...)
+    file: UploadFile = File(...) # noqa: B008
 ):
 
     if not file.filename:
@@ -217,7 +209,7 @@ async def upload_document(
             original_filename,
         )
 
-    except Exception as exc:
+    except Exception as exc: # noqa: BLE001
 
         file_path.unlink(
             missing_ok=True
@@ -245,7 +237,7 @@ async def upload_document(
         "file_size": len(content),
         "uploaded_at": (
             datetime.now(
-                timezone.utc
+                UTC
             ).isoformat()
         ),
         "documents": len(
@@ -294,7 +286,7 @@ async def delete_document_api(
                 missing_ok=True
             )
 
-    except Exception as exc:
+    except Exception as exc: # noqa: BLE001
 
         raise HTTPException(
             status_code=500,
@@ -377,7 +369,7 @@ async def chat(
             history=history,
         )
 
-    except Exception as exc:
+    except Exception as exc: # noqa: BLE001
 
         raise HTTPException(
             status_code=500,

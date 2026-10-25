@@ -8,7 +8,6 @@ from app.config import (
     OPENAI_BASE_URL,
 )
 
-
 COLLECTION_NAME = "rag_documents"
 
 
